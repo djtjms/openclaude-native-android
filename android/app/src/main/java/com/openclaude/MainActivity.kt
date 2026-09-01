@@ -209,7 +209,9 @@ fun ChatScreen(client: EngineClient, engineInfo: String) {
                             }
                         },
                         enabled = inputText.isNotBlank() && !isProcessing,
-                        containerColor = MaterialTheme.colorScheme.primary
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = MaterialTheme.colorScheme.primary
+                        )
                     ) {
                         Text(">", fontWeight = FontWeight.Bold, color = Color.White)
                     }

@@ -2,10 +2,13 @@ package com.openclaude
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -136,10 +139,10 @@ class EngineClient(
 
         val body = buildString {
             append("{\"message\":")
-            append(Json.encodeToString(kotlinx.serialization.json.JsonPrimitive(message)))
+            append(JsonPrimitive(message).toString())
             if (sessionId.isNotBlank()) {
                 append(",\"session_id\":")
-                append(Json.encodeToString(kotlinx.serialization.json.JsonPrimitive(sessionId)))
+                append(JsonPrimitive(sessionId).toString())
             }
             append("}")
         }
