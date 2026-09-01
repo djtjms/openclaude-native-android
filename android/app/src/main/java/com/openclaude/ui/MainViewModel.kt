@@ -60,7 +60,7 @@ class MainViewModel(
 
     private val bridgeUrl: String get() = client.getBridgeUrl()
 
-    fun setEngineMode(mode: EngineMode) {
+    fun updateEngineMode(mode: EngineMode) {
         engineMode = mode
         client.setMode(mode)
         probeEngine()

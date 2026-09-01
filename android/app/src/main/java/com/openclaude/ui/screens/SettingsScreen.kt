@@ -56,7 +56,7 @@ fun SettingsScreen(viewModel: MainViewModel) {
                 EngineMode.entries.forEachIndexed { index, mode ->
                     SegmentedButton(
                         selected = viewModel.engineMode == mode,
-                        onClick = { viewModel.setEngineMode(mode) },
+                        onClick = { viewModel.updateEngineMode(mode) },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = index,
                             count = EngineMode.entries.size
