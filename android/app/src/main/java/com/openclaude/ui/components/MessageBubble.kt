@@ -49,7 +49,7 @@ fun MessageBubble(msg: ChatMessage) {
 @Composable
 private fun UserBubble(msg: ChatMessage) {
     Column(
-        modifier = Modifier.align(Alignment.End),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.End
     ) {
         Row(

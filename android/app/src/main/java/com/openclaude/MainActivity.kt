@@ -30,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.openclaude.ui.MainViewModel
 import com.openclaude.ui.screens.ChatScreen
 import com.openclaude.ui.screens.HistoryScreen
