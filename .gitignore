@@ -18,3 +18,7 @@ Thumbs.db
 # Misc
 *.log
 *.tmp
+
+# Local APK analysis artifacts
+.apk-download/
+apkpure-analysis/

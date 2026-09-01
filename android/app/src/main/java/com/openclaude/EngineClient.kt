@@ -17,6 +17,8 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
+enum class EngineMode { AUTO, EXEC, HTTP }
+
 /**
  * Represents a single event from the chat engine.
  */
@@ -43,9 +45,26 @@ class EngineClient(
 ) {
     private val json = Json { ignoreUnknownKeys = true }
     private var useExec = false
+    var mode: EngineMode = EngineMode.AUTO
+        private set
+
+    fun setMode(newMode: EngineMode) {
+        mode = newMode
+        when (newMode) {
+            EngineMode.EXEC -> useExec = true
+            EngineMode.HTTP -> useExec = false
+            EngineMode.AUTO -> probe()
+        }
+    }
+
+    fun getBridgeUrl(): String = bridgeUrl
 
     /** Probe whether the openclaude binary is available on the device. */
     fun probe(): Boolean {
+        if (mode != EngineMode.AUTO) {
+            useExec = mode == EngineMode.EXEC
+            return useExec
+        }
         return try {
             val proc = ProcessBuilder("which", openclaudeBin)
                 .redirectErrorStream(true)
